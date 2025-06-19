@@ -4,7 +4,7 @@ import pandas as pd
 # إعداد الصفحة
 st.set_page_config(page_title="وصفلي - توليد وصف منتجات تلقائي", layout="centered")
 
-# CSS لتصميم احترافي شامل وخلفية موحدة وحركات خفيفة
+# CSS مخصص للتصميم والبوردر الواضح لحقل الإدخال
 st.markdown("""
     <style>
     html, body, .stApp {
@@ -78,6 +78,13 @@ st.markdown("""
         border-radius: 10px;
         margin-bottom: 30px;
     }
+    input[data-baseweb="input"] {
+        border: 2px solid #f7c948 !important;
+        border-radius: 10px !important;
+        padding: 10px !important;
+        font-size: 16px !important;
+        background-color: #fff !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -96,7 +103,11 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-sheet_url = st.text_input("مثال: https://docs.google.com/spreadsheets/d/...")
+sheet_url = st.text_input(
+    "✏️ أدخل رابط Google Sheet الخاص بك:",
+    placeholder="مثال: https://docs.google.com/spreadsheets/d/...",
+    key="sheet_input"
+)
 
 if st.button("✅ ابدأ التوليد الآن"):
     if sheet_url:
@@ -105,7 +116,7 @@ if st.button("✅ ابدأ التوليد الآن"):
             df = pd.read_csv(csv_url)
 
             if "Image_URL" not in df.columns:
-                st.error("لم يتم العثور على عمود Image_URL.")
+                st.error("❌ لم يتم العثور على عمود Image_URL.")
             else:
                 if len(df) > 20:
                     st.warning("⚠️ النسخة المجانية تدعم حتى 20 صورة فقط. سيتم استخدام أول 20.")
@@ -124,7 +135,7 @@ if st.button("✅ ابدأ التوليد الآن"):
     else:
         st.warning("⚠️ يرجى إدخال رابط الشيت أولاً.")
 
-# ✅ شرح تفاعلي للمنصة بإيموجي
+# ✅ شرح تفاعلي
 st.markdown("""
 <div class="section">
 <h3>🎯 ما هي وصفلي؟</h3>
