@@ -117,13 +117,11 @@ if st.button("ابدأ التوليد"):
     else:
         st.warning("يرجى إدخال رابط الشيت أولاً.")
 
-# ✅ ما هو وصفلي؟
-st.markdown("""
-<div class="section">
-<h3>ما هي وصفلي؟</h3>
-<p><strong>وصفلي</strong> هي أداة ذكية تساعدك على توليد وصف منتجات <span style='color:#0072b5;'>عربي تلقائي</span> بالاعتماد على الصور فقط، لتوفير وقتك وجهدك في كتابة المحتوى، ورفع جودة متجرك.</p>
-</div>
-""", unsafe_allow_html=True)
+# ✅ ما هو وصفلي؟ (داخل Expander)
+with st.expander("ما هي وصفلي؟"):
+    st.markdown("""
+    <p><strong>وصفلي</strong> هي أداة ذكية تساعدك على توليد وصف منتجات <span style='color:#0072b5;'>عربي تلقائي</span> بالاعتماد على الصور فقط، لتوفير وقتك وجهدك في كتابة المحتوى، ورفع جودة متجرك.</p>
+    """, unsafe_allow_html=True)
 
 # ✅ المميزات
 st.markdown("""
@@ -183,5 +181,17 @@ st.markdown("""
 st.markdown("""
 <div class="footer">
 <p>© 2025 وصفلي - جميع الحقوق محفوظة</p>
+</div>
+""", unsafe_allow_html=True) 
+
+# ✅ صفحة الأسعار (جديدة)
+st.markdown("""
+<div class="section">
+<h3>خطط الأسعار:</h3>
+<ul>
+<li><b>الخطة المجانية:</b> حتى 20 رابط صورة - تجربة مباشرة بدون تسجيل</li>
+<li><b>خطة المحترفين:</b> 1000 رابط شهريًا - 39 دولار</li>
+<li><b>خطة الشركات:</b> API مخصص وتكامل مباشر - حسب الطلب</li>
+</ul>
 </div>
 """, unsafe_allow_html=True)
