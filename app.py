@@ -4,40 +4,77 @@ import pandas as pd
 # إعداد الصفحة
 st.set_page_config(page_title="وصفلي - توليد وصف منتجات تلقائي", layout="centered")
 
-# CSS لتصميم احترافي وخطوط متناسقة
+# CSS لتصميم احترافي شامل وخلفية موحدة وحركات خفيفة
 st.markdown("""
     <style>
     html, body, .stApp {
         direction: rtl;
         text-align: right;
         font-family: 'Cairo', sans-serif;
-        background-color: #f9f9f9;
+        background-color: #f1f3f6;
     }
     .section {
         padding: 2em 1em;
         margin-bottom: 2em;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+        transition: transform 0.2s ease;
+    }
+    .section:hover {
+        transform: translateY(-3px);
     }
     .hero {
         text-align: center;
         padding: 3em 1em 2em;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+        margin-bottom: 2em;
     }
     .hero h1 {
-        font-size: 2.5em;
-        color: #333;
+        font-size: 2.7em;
+        color: #222;
     }
     .hero p {
         font-size: 1.2em;
         color: #666;
         margin-top: 0.5em;
     }
+    h3 {
+        color: #004d7a;
+    }
+    ul li {
+        color: #333;
+        font-size: 1.05em;
+    }
     .step-box {
-        background-color: #f1f1f1;
+        background-color: #e9eef4;
         padding: 16px;
         border-radius: 10px;
         margin-bottom: 10px;
+    }
+    a.social {
+        text-decoration: none;
+        margin: 0 10px;
+        color: #ffffff;
+        font-weight: bold;
+    }
+    .footer {
+        text-align: center;
+        padding: 1em 0;
+    }
+    .social-icons {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .social-icons img {
+        width: 30px;
+        margin: 0 10px;
+        transition: transform 0.3s ease;
+    }
+    .social-icons img:hover {
+        transform: scale(1.2);
     }
     </style>
 """, unsafe_allow_html=True)
@@ -46,7 +83,7 @@ st.markdown("""
 st.markdown("""
 <div class="hero">
     <h1>وصفلي</h1>
-    <p>حوّل روابط صور منتجاتك إلى وصف احترافي باللغة العربية في دقائق.</p>
+    <p><span style='color:#004d7a;'>حوّل روابط صور منتجاتك</span> إلى وصف احترافي باللغة العربية في دقائق.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -84,7 +121,7 @@ if st.button("ابدأ التوليد"):
 st.markdown("""
 <div class="section">
 <h3>ما هي وصفلي؟</h3>
-<p>وصفلي هي أداة ذكية تساعدك على توليد وصف منتجات عربي تلقائي بالاعتماد على الصور فقط، لتوفير وقتك وجهدك في كتابة المحتوى.</p>
+<p><strong>وصفلي</strong> هي أداة ذكية تساعدك على توليد وصف منتجات <span style='color:#0072b5;'>عربي تلقائي</span> بالاعتماد على الصور فقط، لتوفير وقتك وجهدك في كتابة المحتوى، ورفع جودة متجرك.</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -93,11 +130,11 @@ st.markdown("""
 <div class="section">
 <h3>مميزات الأداة:</h3>
 <ul>
-<li>وصف احترافي باللغة العربية</li>
-<li>لا حاجة لكتابة أي شيء يدويًا</li>
-<li>دعم للفصحى ولهجات السوق الخليجي والمصري</li>
-<li>نتائج فورية بصيغة CSV</li>
-<li>نسخة تجريبية مجانية حتى 20 منتج</li>
+<li>وصف احترافي باللغة العربية (فصحى ولهجات)</li>
+<li>لا حاجة لكتابة أو تحرير يدوي</li>
+<li>سريع ويدعم حتى 1000 منتج في النسخ المدفوعة</li>
+<li>يدعم المتاجر الإلكترونية: Shopify, WooCommerce, Jumia, Noon</li>
+<li>نتائج قابلة للتنزيل فورًا</li>
 </ul>
 </div>
 """, unsafe_allow_html=True)
@@ -112,15 +149,15 @@ st.markdown("""
 </div>
 <div class='step-box'>
 <b>2. فعّل المشاركة العامة</b><br>
-اضبط الشيت على "Anyone with the link can view".
+اجعل صلاحية الوصول "Anyone with the link can view".
 </div>
 <div class='step-box'>
-<b>3. الصق الرابط في الأعلى</b><br>
-وأضغط على "ابدأ التوليد".
+<b>3. الصق الرابط</b><br>
+في الحقل بالأعلى، ثم اضغط على "ابدأ التوليد".
 </div>
 <div class='step-box'>
 <b>4. حمّل الملف الناتج</b><br>
-CSV يحتوي على وصف تلقائي لكل منتج.
+CSV يحتوي على وصف تلقائي وجاهز للنشر.
 </div>
 </div>
 """, unsafe_allow_html=True)
@@ -128,7 +165,23 @@ CSV يحتوي على وصف تلقائي لكل منتج.
 # ✅ CTA إضافي
 st.markdown("""
 <div class="section" style="text-align: center;">
-<p>هل تريد توليد أوصاف لأكثر من 20 منتج؟ أو دمج الأداة مع متجرك؟</p>
-<a href="#" style="color: #0066cc; font-weight: bold;">تواصل معنا</a>
+<p>هل لديك أكثر من 1000 منتج أو ترغب في دمج الأداة داخل موقعك؟</p>
+<a href="#" style="color: #0066cc; font-weight: bold;">تواصل معنا الآن</a>
+</div>
+""", unsafe_allow_html=True)
+
+# ✅ أيقونات التواصل الاجتماعي
+st.markdown("""
+<div class="social-icons">
+    <a href="https://wa.me/966500000000" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="واتساب"></a>
+    <a href="https://twitter.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="تويتر"></a>
+    <a href="https://facebook.com" target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="فيسبوك"></a>
+</div>
+""", unsafe_allow_html=True)
+
+# ✅ Footer
+st.markdown("""
+<div class="footer">
+<p>© 2025 وصفلي - جميع الحقوق محفوظة</p>
 </div>
 """, unsafe_allow_html=True)
